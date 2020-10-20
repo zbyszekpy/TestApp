@@ -19,7 +19,7 @@ namespace TestApp
         {
                 try
                 {
-                    return realReader.ReadAsync(path);
+                    return realReader.Read(path);
                 }
                 catch (Exception e)
                 {
@@ -32,12 +32,12 @@ namespace TestApp
 
     public interface IReader
     {
-        Task<IEnumerable<string>> ReadAsync(string param);
+        Task<IEnumerable<string>> Read(string param);
     }
 
     internal class FileReader : IReader
     {
-        public async Task<IEnumerable<string>> ReadAsync(string param)
+        public async Task<IEnumerable<string>> Read(string param)
         {
             return await File.ReadAllLinesAsync(param);
         }
@@ -45,7 +45,7 @@ namespace TestApp
 
     internal class FakeReader : IReader
     {
-        public async Task<IEnumerable<string>> ReadAsync(string param)
+        public async Task<IEnumerable<string>> Read(string param)
         {
             return await File.ReadAllLinesAsync(param);
         }
