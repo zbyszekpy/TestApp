@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace TestApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var res = await new CustomerRepository(new FakeReader()).ReadAsync();
+            Console.WriteLine(string.Join(",", res));
         }
     }
 }
